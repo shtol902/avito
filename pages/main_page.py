@@ -1,10 +1,14 @@
 import random
-from selenium.webdriver.common.by import By
+import allure
 from base_page import BasePage
 from locators.main_page_locators import MainPageLocators
 
 
 class MainPage(BasePage):
+
+    @allure.step("Клик на кнопку Перейти в кабинет")
+    def click_on_card(self):
+        self.click_element(MainPageLocators.GAME_CARDS)
 
     def open_game_card(self):
         cards = self.find_elements(MainPageLocators.GAME_CARDS)
