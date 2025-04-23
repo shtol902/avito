@@ -19,8 +19,14 @@ class BasePage:
         self.wait.until(EC.element_to_be_clickable(locator))
         self.wait_and_find_element(locator).click()
 
+    def get_url_page(self):
+        return self.driver.current_url
+
     def get_class(self, locator):
         return self.wait_and_find_element(locator).get_attribute('class')
+
+    def get_title(self, locator):
+        return self.wait_and_find_element(locator).get_attribute('title')
 
     def wait_for_url_contains(self, url_part):
         self.wait.until(EC.url_contains(url_part))

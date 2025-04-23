@@ -14,19 +14,20 @@ class MainPage(BasePage):
     def click_to_next_page(self):
         self.click_element(MainPageLocators.PAGINATION_NEXT)
 
+    @allure.step("Клик на раскрывающийся список")
+    def click_to_dropdown(self):
+        self.click_element(MainPageLocators.DROPDOWN)
+
+    @allure.step("Клик на кнопку 20/page в выпадающем списке")
+    def click_to_dropdown_item(self):
+        self.click_element(MainPageLocators.DROPDOWN_BUTTON_20)
+
     @allure.step("Получить class элемента")
     def get_class_element(self):
         return self.get_class(MainPageLocators.SECOND_PAGE)
 
-    def open_game_card(self):
-        cards = self.find_elements(MainPageLocators.GAME_CARDS)
-        cards.click()
-        return GamePage(self.driver)
-
-    def get_games_count(self):
-        return len(self.find_elements(MainPageLocators.GAME_CARDS))
+    @allure.step("Получить title элемента")
+    def get_title_element(self):
+        return self.get_title(MainPageLocators.DROPDOWN)
 
 
-    def filter_by_genre(self, genre):
-        self.find_element(MainPageLocators.GENRE_FILTER).send_keys(genre)
-        return self
